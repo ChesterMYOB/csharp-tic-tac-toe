@@ -8,7 +8,7 @@ namespace TicTacToe
 {
     public class ConsoleRenderer
     {
-        public void Render(List<Mark> boardState)
+        public void RenderBoard(List<Mark> boardState)
         {
             var board = new StringBuilder();
             board.Append("    |     |     ");

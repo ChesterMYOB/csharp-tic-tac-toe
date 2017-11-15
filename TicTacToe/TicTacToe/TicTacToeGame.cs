@@ -4,19 +4,19 @@ namespace TicTacToe.UnitTest
 {
     public class TicTacToeGame
     {
-        public ConsoleRenderer renderer { get; set; }
-        public SimpleGameBoard gameBoard { get; set; }
+        public ConsoleRenderer Renderer { get; set; }
+        public SimpleGameBoard GameBoard { get; set; }
 
         public TicTacToeGame()
         {
-            renderer = new ConsoleRenderer();
+            Renderer = new ConsoleRenderer();
 
 
         }
 
         public void RenderBoard()
         {
-            renderer.Render();
+            Renderer.RenderBoard(GameBoard.BoardState);
         }
     }
 }
