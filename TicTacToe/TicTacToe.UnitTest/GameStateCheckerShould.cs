@@ -1,25 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using Xunit;
 
 namespace TicTacToe.UnitTest
 {
     public class GameStateCheckerShould
     {
-        //[Theory]
-        //[InlineData(false, new[] {
-        //    '-', '-', '-',
-        //    '-', '-', '-',
-        //    '-', '-', '-'})]
-        //public void CheckForWin(bool winStatus, char[] boardState)
-        //{
-        //    var stateChecker = new GameStateChecker();
-        //    var winStatus = stateChecker.HasWon();
-        //}
-
         [Theory]
         [InlineData(false, new[] {
             '-', '-', '-',
