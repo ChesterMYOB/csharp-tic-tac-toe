@@ -9,9 +9,8 @@ namespace TicTacToe.UnitTest
 
         public TicTacToeGame()
         {
+            GameBoard = new SimpleGameBoard();;
             Renderer = new ConsoleRenderer();
-
-
         }
 
         public void RenderBoard()

@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="ConsoleRenderer.cs" />
     <Compile Include="GameStateChecker.cs" />
+    <Compile Include="MarkOccupiedException.cs" />
     <Compile Include="SimpleGameBoard.cs" />
     <Compile Include="TicTacToeGame.cs" />
     <Compile Include="Mark.cs" />
