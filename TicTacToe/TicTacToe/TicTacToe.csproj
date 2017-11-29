@@ -44,7 +44,7 @@
   <ItemGroup>
     <Compile Include="GameBoard\IGameBoard.cs" />
     <Compile Include="Player\HumanPlayer.cs" />
-    <Compile Include="Player\SolverWhichCanOnlyPlayIfItGoesFirst.cs" />
+    <Compile Include="Player\AISolver.cs" />
     <Compile Include="Renderer\ConsoleRenderer.cs" />
     <Compile Include="Renderer\ConsoleSpinner.cs" />
     <Compile Include="StateChecker\IStateChecker.cs" />

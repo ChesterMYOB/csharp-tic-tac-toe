@@ -9,10 +9,10 @@ namespace TicTacToe.UnitTest
 {
     public class AISolverShould
     {
-        private readonly SolverWhichCanOnlyPlayIfItGoesFirst _brokenAi;
+        private readonly AISolver _brokenAi;
         public AISolverShould()
         {
-            _brokenAi = new SolverWhichCanOnlyPlayIfItGoesFirst();
+            _brokenAi = new AISolver();
         }
 
 

@@ -7,15 +7,20 @@ using TicTacToe.StateChecker;
 
 namespace TicTacToe.Player
 {
-    public class SolverWhichCanOnlyPlayIfItGoesFirst : IPlayer
+    public class AISolver : IPlayer
     {
         private readonly IStateChecker _simpleGameStateChecker;
         public Mark PlayersMark { get; set; }
 
 
-        public SolverWhichCanOnlyPlayIfItGoesFirst()
+        public AISolver()
         {
             PlayersMark = Mark.Cross;
+            _simpleGameStateChecker = new SimpleGameStateChecker();
+        }
+        public AISolver(Mark mark)
+        {
+            PlayersMark = mark;
             _simpleGameStateChecker = new SimpleGameStateChecker();
         }
 

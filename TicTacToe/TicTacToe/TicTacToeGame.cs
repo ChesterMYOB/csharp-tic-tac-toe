@@ -19,7 +19,7 @@ namespace TicTacToe
             switch (players)
             {
                 case 1:
-                    PlayerOne = new SolverWhichCanOnlyPlayIfItGoesFirst();
+                    PlayerOne = new AISolver();
                     PlayerTwo = new HumanPlayer(Renderer, Mark.Naught);
                     break;
                 case 2:
@@ -27,8 +27,8 @@ namespace TicTacToe
                     PlayerTwo = new HumanPlayer(Renderer, Mark.Naught);
                     break;
                 default:
-                    PlayerOne = new SolverWhichCanOnlyPlayIfItGoesFirst();
-                    PlayerTwo = new SolverWhichCanOnlyPlayIfItGoesFirst();
+                    PlayerOne = new AISolver();
+                    PlayerTwo = new AISolver(Mark.Naught);
                     break;
             }
         }
