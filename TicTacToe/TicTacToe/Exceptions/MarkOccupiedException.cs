@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TicTacToe
+namespace TicTacToe.Exceptions
 {
     public class MarkOccupiedException : Exception
     {

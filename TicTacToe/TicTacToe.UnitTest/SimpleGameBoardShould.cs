@@ -1,8 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Security.Authentication;
 using NUnit.Framework;
+using TicTacToe.Exceptions;
+using TicTacToe.GameBoard;
+using TicTacToe.StateChecker;
 using Xunit;
 using Assert = Xunit.Assert;
 using Theory = Xunit.TheoryAttribute;
@@ -74,18 +75,81 @@ namespace TicTacToe.UnitTest
                 }
             };
 
-            Exception ex = Assert.Throws<MarkOccupiedException>(() => gameBoard.AddMarkToBoard(Mark.Cross, 1, 1));
-            Assert.Equal("Mark Occupied!", ex.Message);
+            System.Exception ex = Assert.Throws<MarkOccupiedException>(() => gameBoard.AddMarkToBoard(Mark.Cross, 1, 1));
+            Assert.Equal("Mark occupied!", ex.Message);
         }
 
         [Theory]
+        [InlineData(Mark.Cross, -1, -1)]
         [InlineData(Mark.Cross, -1, 0)]
+        [InlineData(Mark.Cross, -1, 1)]
+        [InlineData(Mark.Cross, 0, -1)]
+        [InlineData(Mark.Cross, 1, -1)]
+        [InlineData(Mark.Cross, 3, 3)]
+        [InlineData(Mark.Cross, 3, 2)]
+        [InlineData(Mark.Cross, 3, 1)]
+        [InlineData(Mark.Cross, 2, 3)]
+        [InlineData(Mark.Cross, 1, 3)]
         public void ReturnErrorWhenAddingMarkToNoneBoardArea(Mark mark, int x, int y)
         {
             var gameBoard = new SimpleGameBoard();
 
-            Exception ex = Assert.Throws<InvalidMarkPlacementException>(() => gameBoard.AddMarkToBoard(mark, x, y));
-            Assert.Equal("Mark ", ex.Message);
+            System.Exception ex = Assert.Throws<InvalidMarkPlacementException>(() => gameBoard.AddMarkToBoard(mark, x, y));
+            Assert.Equal("Mark placed wrongly!", ex.Message);
+        }
+
+        [Fact]
+        public void ReturnTrueForTie_WhenAllCellsAreOccupied()
+        {
+            var gameBoard = new SimpleGameBoard
+            {
+                BoardState = new List<Mark>
+                {
+                    Mark.Cross,Mark.Cross,Mark.Cross,
+                    Mark.Cross,Mark.Cross,Mark.Cross,
+                    Mark.Naught,Mark.Naught,Mark.Naught
+                }
+            };
+
+            var gameStateChecker = new SimpleGameStateChecker();
+            var actual = gameStateChecker.HasDrawn(gameBoard.BoardState);
+            Assert.True(actual);
+        }
+
+        [Fact]
+        public void ReturnFalseForTie_WhenAllCellsAreUnoccupied()
+        {
+            var gameBoard = new SimpleGameBoard
+            {
+                BoardState = new List<Mark>
+                {
+                    Mark.Empty,Mark.Empty,Mark.Empty,
+                    Mark.Empty,Mark.Empty,Mark.Empty,
+                    Mark.Empty,Mark.Empty,Mark.Empty
+                }
+            };
+
+            var gameStateChecker = new SimpleGameStateChecker();
+            var actual = gameStateChecker.HasDrawn(gameBoard.BoardState);
+            Assert.False(actual);
+        }
+
+        [Fact]
+        public void ReturnFalseForTie_WhenAllButOneCellsAreUnoccupied()
+        {
+            var gameBoard = new SimpleGameBoard
+            {
+                BoardState = new List<Mark>
+                {
+                    Mark.Empty,Mark.Empty,Mark.Empty,
+                    Mark.Empty,Mark.Cross,Mark.Empty,
+                    Mark.Empty,Mark.Empty,Mark.Empty
+                }
+            };
+
+            var gameStateChecker = new SimpleGameStateChecker();
+            var actual = gameStateChecker.HasDrawn(gameBoard.BoardState);
+            Assert.False(actual);
         }
     }
 }

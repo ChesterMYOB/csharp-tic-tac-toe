@@ -1,4 +1,6 @@
 ﻿using System.Linq;
+using TicTacToe.GameBoard;
+using TicTacToe.StateChecker;
 using Xunit;
 
 namespace TicTacToe.UnitTest
@@ -33,8 +35,8 @@ namespace TicTacToe.UnitTest
         public void CheckForWinOnRows(bool expected, char[] boardState)
         {
             var board = boardState.Select(token => (Mark) token).ToList();
-            var stateChecker = new GameStateChecker();
-            var actual = stateChecker.CheckRows(board);
+            var gameStateChecker = new SimpleGameStateChecker();
+            var actual = gameStateChecker.CheckRows(board);
             Assert.Equal(expected, actual);
         }
 
@@ -66,8 +68,8 @@ namespace TicTacToe.UnitTest
         public void CheckForWinOnColumns(bool expected, char[] boardState)
         {
             var board = boardState.Select(token => (Mark)token).ToList();
-            var stateChecker = new GameStateChecker();
-            var actual = stateChecker.CheckColumns(board);
+            var gameStateChecker = new SimpleGameStateChecker();
+            var actual = gameStateChecker.CheckColumns(board);
             Assert.Equal(expected, actual);
         }
 
@@ -95,8 +97,8 @@ namespace TicTacToe.UnitTest
         public void CheckForWinOnDiagrams(bool expected, char[] boardState)
         {
             var board = boardState.Select(token => (Mark)token).ToList();
-            var stateChecker = new GameStateChecker();
-            var actual = stateChecker.CheckDiagonals(board);
+            var gameStateChecker = new SimpleGameStateChecker();
+            var actual = gameStateChecker.CheckDiagonals(board);
             Assert.Equal(expected, actual);
         }
     }

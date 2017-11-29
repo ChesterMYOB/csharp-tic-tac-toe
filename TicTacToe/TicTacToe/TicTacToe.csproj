@@ -42,13 +42,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConsoleRenderer.cs" />
-    <Compile Include="GameStateChecker.cs" />
-    <Compile Include="MarkOccupiedException.cs" />
-    <Compile Include="SimpleGameBoard.cs" />
+    <Compile Include="GameBoard\IGameBoard.cs" />
+    <Compile Include="Player\HumanPlayer.cs" />
+    <Compile Include="Player\SolverWhichCanOnlyPlayIfItGoesFirst.cs" />
+    <Compile Include="Renderer\ConsoleRenderer.cs" />
+    <Compile Include="Renderer\ConsoleSpinner.cs" />
+    <Compile Include="StateChecker\IStateChecker.cs" />
+    <Compile Include="StateChecker\SimpleGameStateChecker.cs" />
+    <Compile Include="Exceptions\InvalidMarkPlacementException.cs" />
+    <Compile Include="Player\IPlayer.cs" />
+    <Compile Include="Exceptions\MarkOccupiedException.cs" />
+    <Compile Include="Renderer\IRenderer.cs" />
+    <Compile Include="GameBoard\SimpleGameBoard.cs" />
     <Compile Include="TicTacToeGame.cs" />
-    <Compile Include="Mark.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="GameBoard\Mark.cs" />
+    <Compile Include="ConsoleApplication.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
